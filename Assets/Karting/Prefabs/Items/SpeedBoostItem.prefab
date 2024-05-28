@@ -62,6 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_player: {fileID: 0}
+  m_effectDuration: 5
   boostedStatsAddition:
     TopSpeed: 30
     Acceleration: 14
