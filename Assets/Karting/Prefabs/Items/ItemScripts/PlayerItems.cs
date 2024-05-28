@@ -19,6 +19,20 @@ namespace KartGame.Items
 
             currentHeldItem = availableItems[randomItemIndex];
         }
+
+        private void Update()
+        {
+            if (Input.GetButtonDown("UseItem"))
+            {
+                if(currentHeldItem != null)
+                {
+                    Debug.Log("Used Item");
+                    currentHeldItem.GetComponent<IItemUse>().UseItem();
+                    currentHeldItem = null;
+                }
+                
+            }
+        }
     }
 }
 

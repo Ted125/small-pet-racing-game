@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2175105134551791188}
   - component: {fileID: 5887390790101412074}
-  - component: {fileID: 8908109105251912697}
+  - component: {fileID: 4494824524355165080}
   m_Layer: 0
-  m_Name: SpeedBoostItem
+  m_Name: JumpBoostItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
   serializedPrefabGuid: 
   originalPrefab: {fileID: 0}
   clearIfPrefabAsset: 1
---- !u!114 &8908109105251912697
+--- !u!114 &4494824524355165080
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -58,19 +58,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6835965535061661305}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f0bd613b62454e47a4064f616241a63, type: 3}
+  m_Script: {fileID: 11500000, guid: ef0a83a0fa16beb4d92ef6825cb5a885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_player: {fileID: 0}
-  m_effectDuration: 5
-  boostedStatsAddition:
-    TopSpeed: 30
-    Acceleration: 14
-    ReverseSpeed: 0
-    ReverseAcceleration: 0
-    AccelerationCurve: 0
-    Braking: 0
-    CoastingDrag: 0
-    Grip: 0
-    Steer: 0
-    AddedGravity: 0
+  m_jumpForce: 15
