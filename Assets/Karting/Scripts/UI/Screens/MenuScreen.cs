@@ -13,18 +13,24 @@ namespace Karting.UI.Screens
 
         private void Start()
         {
-            _raceButton.onClick.AddListener(LoadRaceScene);
             _leaderboardButton.onClick.AddListener(ShowLeaderboardPopup);
+            _raceButton.onClick.AddListener(LoadRaceScene);
+            ShowWelcomePopup();
         }
 
-        private void LoadRaceScene()
+        private void ShowWelcomePopup()
         {
-            SceneManager.LoadScene("MainScene");
+            UIManager.Instance.ShowPopup<WelcomePopup>();
         }
 
         private void ShowLeaderboardPopup()
         {
             UIManager.Instance.ShowPopup<LeaderboardPopup>();
+        }
+
+        private void LoadRaceScene()
+        {
+            SceneManager.LoadScene("MainScene");
         }
     }
 }

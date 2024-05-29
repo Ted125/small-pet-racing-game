@@ -6664,6 +6664,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _screenPrefabs: []
   _popupPrefabs:
+  - {fileID: 9098280102244308735, guid: 7172d706865e9438fa30992143eb0ea7, type: 3}
   - {fileID: 6549525862261278810, guid: 6f38b9bbb949f49808a4c57ddc46ec40, type: 3}
   _canvas: {fileID: 1245107234}
 --- !u!114 &1341500393
