@@ -19,7 +19,7 @@ namespace Karting.UI.Popups
         private void Submit()
         {
             var saveData = SaveData.Load();
-            saveData.PlayerName = _nameInputField.text;
+            saveData.SetPlayerName(_nameInputField.text);
             saveData.Save();
             gameObject.SetActive(false);
         }

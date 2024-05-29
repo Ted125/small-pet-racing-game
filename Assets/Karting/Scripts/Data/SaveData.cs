@@ -1,12 +1,16 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Karting.Data
 {
     [Serializable]
     public sealed class SaveData
     {
-        public string PlayerName = string.Empty;
+        public string PlayerName = $"Guest-{Guid.NewGuid().ToString()[^4..]}";
+        public bool HasPlayerRenamed = false;
+
+        public static UnityAction OnPlayerNameUpdated;
 
         private const string SAVE_DATA_FILE_NAME = "karting.save";
 
@@ -27,6 +31,14 @@ namespace Karting.Data
         private static SaveData CreateInitialSaveData()
         {
             return new SaveData();
+        }
+
+        public void SetPlayerName(string playerName)
+        {
+            PlayerName = playerName;
+            HasPlayerRenamed = true;
+            Save();
+            OnPlayerNameUpdated?.Invoke();
         }
 
         public void Save()

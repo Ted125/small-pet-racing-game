@@ -552,6 +552,18 @@ MonoBehaviour:
   originalPrefab: {fileID: 3563178726752927840, guid: fbb2c6c5070a3ab409aca0074389c7d5,
     type: 3}
   clearIfPrefabAsset: 1
+--- !u!114 &207749015 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2847486984683713798, guid: fbb2c6c5070a3ab409aca0074389c7d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1845065833}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207749011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &215087870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2451,6 +2463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5b0cedde8a54716bef21232447160a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerName: {fileID: 207749015}
   _raceButton: {fileID: 50913594}
   _leaderboardButton: {fileID: 1708449274}
 --- !u!114 &955069511
@@ -4081,7 +4094,7 @@ PrefabInstance:
     - target: {fileID: 9121581524848678523, guid: 61bba3ef2489ed94bb3d3912c3491b18,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 41
+      value: 40.999878
       objectReference: {fileID: 0}
     - target: {fileID: 9121581524848678523, guid: 61bba3ef2489ed94bb3d3912c3491b18,
         type: 3}
@@ -6033,7 +6046,7 @@ PrefabInstance:
     - target: {fileID: 9121581524848678523, guid: 61bba3ef2489ed94bb3d3912c3491b18,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 41
+      value: 40.999878
       objectReference: {fileID: 0}
     - target: {fileID: 9121581524848678523, guid: 61bba3ef2489ed94bb3d3912c3491b18,
         type: 3}
@@ -8330,6 +8343,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.characterCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847486984683713798, guid: fbb2c6c5070a3ab409aca0074389c7d5,
+        type: 3}
+      propertyPath: m_text
+      value: Guest
       objectReference: {fileID: 0}
     - target: {fileID: 2847486984683713798, guid: fbb2c6c5070a3ab409aca0074389c7d5,
         type: 3}
