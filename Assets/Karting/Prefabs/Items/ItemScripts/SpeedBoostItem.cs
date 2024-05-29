@@ -1,5 +1,6 @@
 using KartGame.Items;
 using KartGame.KartSystems;
+using KartGame.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,11 +14,14 @@ namespace KartGame.Items
         private ArcadeKart m_player;
         [SerializeField]
         private float m_effectDuration;
+        [SerializeField]
+        private Sprite m_itemIcon;
 
         [SerializeField]
         private Stats boostedStatsAddition;
         public void UseItem()
         {
+            FindObjectOfType<ItemUIHandle>().OnItemUsed();
             StartCoroutine(SpeedBoostRoutine());
         }
 
@@ -29,6 +33,11 @@ namespace KartGame.Items
             yield return new WaitForSeconds(m_effectDuration);
 
             m_player.baseStats = originalStats;
+        }
+
+        public void SetupIcon()
+        {
+            FindObjectOfType<ItemUIHandle>().SetupUI(m_itemIcon);
         }
     }
 }

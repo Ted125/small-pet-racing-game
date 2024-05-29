@@ -19,6 +19,7 @@ namespace KartGame.Items
             if(other.tag == "Player")
             {
                 other.gameObject.GetComponentInParent<PlayerItems>().SetRandomHeldItem();
+
                 StartCoroutine(OnHitRoutine());
             }
         }

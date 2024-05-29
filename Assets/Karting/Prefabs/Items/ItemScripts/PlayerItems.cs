@@ -1,4 +1,5 @@
 using KartGame.Items;
+using KartGame.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,9 +16,11 @@ namespace KartGame.Items
 
         public void SetRandomHeldItem()
         {
-            int randomItemIndex = Random.Range(0, availableItems.Count - 1);
+            int randomItemIndex = Random.Range(0, availableItems.Count);
 
             currentHeldItem = availableItems[randomItemIndex];
+
+            currentHeldItem.GetComponent<IItemUse>().SetupIcon();
         }
 
         private void Update()
