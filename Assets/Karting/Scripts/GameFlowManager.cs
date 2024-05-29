@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 using KartGame.KartSystems;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public enum GameState{Play, Won, Lost}
 
@@ -35,6 +36,14 @@ public class GameFlowManager : MonoBehaviour
     [Tooltip("Prefab for the lose game message")]
     public DisplayMessage loseDisplayMessage;
 
+    [SerializeField]
+    Transform spawnCartLocation;
+
+    [SerializeField]
+    CinemachineVirtualCamera camera;
+    [SerializeField]
+    Joystick joystick;
+
 
     public GameState gameState { get; private set; }
 
@@ -51,19 +60,30 @@ public class GameFlowManager : MonoBehaviour
 
     void Start()
     {
+        int cartIdToLoad = PlayerPrefs.GetInt("CART_ID", 2);
+        GameObject playerCart = SpawnCart(CartDataManager.GetInstance().carts[cartIdToLoad]);
+        karts = new ArcadeKart[1];
+        karts[0] = playerCart.GetComponent<ArcadeKart>();
+        playerKart = karts[0];
+
+        camera.Follow = karts[0].transform;
+        camera.LookAt = karts[0].GetComponent<ArcadeKart>().cartLookAt;
+        karts[0].GetComponent<JoystickInput>().JoystickObject = joystick;
+
+
         foreach (Transform t in HUD.GetComponentInChildren<Transform>())
         {
             t.gameObject.SetActive(true);
         }
-        if (autoFindKarts)
-        {
-            karts = FindObjectsOfType<ArcadeKart>();
-            if (karts.Length > 0)
-            {
-                if (!playerKart) playerKart = karts[0];
-            }
-            DebugUtility.HandleErrorIfNullFindObject<ArcadeKart, GameFlowManager>(playerKart, this);
-        }
+        //if (autoFindKarts)
+        //{
+        //    karts = FindObjectsOfType<ArcadeKart>();
+        //    if (karts.Length > 0)
+        //    {
+        //        if (!playerKart) playerKart = karts[0];
+        //    }
+        //    DebugUtility.HandleErrorIfNullFindObject<ArcadeKart, GameFlowManager>(playerKart, this);
+        //}
 
         m_ObjectiveManager = FindObjectOfType<ObjectiveManager>();
 		DebugUtility.HandleErrorIfNullFindObject<ObjectiveManager, GameFlowManager>(m_ObjectiveManager, this);
@@ -92,6 +112,17 @@ public class GameFlowManager : MonoBehaviour
     IEnumerator CountdownThenStartRaceRoutine() {
         yield return new WaitForSeconds(3f);
         StartRace();
+    }
+
+    public GameObject SpawnCart(CartData data)
+    {
+        GameObject GoCart = Instantiate(Resources.Load<GameObject>("carts/" + data.prefabName), 
+            spawnCartLocation.transform.position, spawnCartLocation.transform.rotation) as GameObject;
+        GoCart.GetComponent<ArcadeKart>().Customize(data);
+        //setup camera
+        //setup joystick
+
+        return GoCart;
     }
 
     void StartRace() {

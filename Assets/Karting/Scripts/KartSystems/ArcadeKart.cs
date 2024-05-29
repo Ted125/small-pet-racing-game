@@ -90,6 +90,9 @@ namespace KartGame.KartSystems
             AddedGravity        = 1f,
         };
 
+        [SerializeField]
+        GameObject CartModel;
+
         [Header("Vehicle Visual")] 
         public List<GameObject> m_VisualWheels;
 
@@ -161,6 +164,9 @@ namespace KartGame.KartSystems
         const float k_NullSpeed = 0.01f;
         Vector3 m_VerticalReference = Vector3.up;
 
+        [SerializeField]
+        public Transform cartLookAt;
+
         // Drift params
         public bool WantsToDrift { get; private set; } = false;
         public bool IsDrifting { get; private set; } = false;
@@ -184,6 +190,17 @@ namespace KartGame.KartSystems
         public void AddPowerup(StatPowerup statPowerup) => m_ActivePowerupList.Add(statPowerup);
         public void SetCanMove(bool move) => m_CanMove = move;
         public float GetMaxSpeed() => Mathf.Max(m_FinalStats.TopSpeed, m_FinalStats.ReverseSpeed);
+
+        public void Customize(CartData data)
+        {
+            Renderer renderer = CartModel.GetComponent<Renderer>();
+            Material mat = renderer.material;
+            mat.color = data.cartColor;
+            mat.SetFloat("_Glossiness", data.metallic);
+            mat.SetFloat("_BumpScale", data.normalMapHeight);
+            baseStats.Acceleration = data.acceleration;
+            baseStats.TopSpeed = data.topSpeed;
+        }    
 
         private void ActivateDriftVFX(bool active)
         {
