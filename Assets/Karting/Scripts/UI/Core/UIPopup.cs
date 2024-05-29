@@ -3,14 +3,14 @@ using UnityEngine.UI;
 
 namespace Karting.UI.Core
 {
-    public abstract class UIPopup : UIComponent
+    public class UIPopup : UIComponent
     {
         [SerializeField]
         private Button _closeButton;
 
         private void Start()
         {
-            _closeButton.onClick.AddListener(Hide);
+            _closeButton.onClick.AddListener(() => gameObject.SetActive(false));
         }
     }
 }

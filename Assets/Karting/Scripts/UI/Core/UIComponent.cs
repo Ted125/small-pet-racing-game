@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Karting.UI.Core
 {
-    public abstract class UIComponent : MonoBehaviour
+    public class UIComponent : MonoBehaviour
     {
         public bool Visible { get; private set; }
 
@@ -38,8 +38,8 @@ namespace Karting.UI.Core
             OnHide();
         }
 
-        protected abstract void OnShow();
+        protected virtual void OnShow() { }
 
-        protected abstract void OnHide();
+        protected virtual void OnHide() { }
     }
 }

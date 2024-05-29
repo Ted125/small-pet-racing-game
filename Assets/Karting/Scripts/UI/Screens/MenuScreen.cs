@@ -1,19 +1,52 @@
+using Karting.Data;
+using Karting.UI.Core;
+using Karting.UI.Popups;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MenuScreen : MonoBehaviour
+namespace Karting.UI.Screens
 {
-    [SerializeField]
-    private Button _raceButton;
-
-    private void Start()
+    public class MenuScreen : MonoBehaviour
     {
-        _raceButton.onClick.AddListener(LoadRaceScene);
-    }
+        [SerializeField] private TMP_Text _playerName;
+        [SerializeField] private Button _raceButton;
+        [SerializeField] private Button _leaderboardButton;
 
-    private void LoadRaceScene()
-    {
-        SceneManager.LoadScene("MainScene");
+        private void Start()
+        {
+            _leaderboardButton.onClick.AddListener(ShowLeaderboardPopup);
+            _raceButton.onClick.AddListener(LoadRaceScene);
+            DisplayPlayerName();
+            ShowWelcomePopup();
+            SaveData.OnPlayerNameUpdated += DisplayPlayerName;
+        }
+
+        private void ShowWelcomePopup()
+        {
+            var saveData = SaveData.Load();
+
+            if (!saveData.HasPlayerRenamed)
+            {
+                UIManager.Instance.ShowPopup<WelcomePopup>();
+            }
+        }
+
+        private void DisplayPlayerName()
+        {
+            var saveData = SaveData.Load();
+            _playerName.text = saveData.PlayerName;
+        }
+
+        private void ShowLeaderboardPopup()
+        {
+            UIManager.Instance.ShowPopup<LeaderboardPopup>();
+        }
+
+        private void LoadRaceScene()
+        {
+            SceneManager.LoadScene("MainScene");
+        }
     }
 }

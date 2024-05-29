@@ -7,6 +7,8 @@ namespace KartGame.Items
     public interface IItemUse
     {
         public void UseItem();
+
+        public void SetupIcon();
     }
 
 }
