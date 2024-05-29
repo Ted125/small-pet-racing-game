@@ -1,3 +1,4 @@
+using Karting.Config;
 using Karting.Data;
 using Karting.UI.Core;
 using Karting.UI.Popups;
@@ -46,6 +47,15 @@ namespace Karting.UI.Screens
 
         private void LoadRaceScene()
         {
+            var saveData = SaveData.Load();
+            var energyCost = ConfigManager.Instance.EnergyConfig.RaceEnergyCost;
+
+            if (saveData.RemainingEnergy < energyCost)
+            {
+                return;
+            }
+
+            saveData.ConsumeEnergy(energyCost);
             SceneManager.LoadScene("MainScene");
         }
     }
