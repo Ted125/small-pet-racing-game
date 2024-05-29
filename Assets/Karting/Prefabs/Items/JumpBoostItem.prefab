@@ -63,3 +63,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_player: {fileID: 0}
   m_jumpForce: 15
+  m_itemIcon: {fileID: 21300000, guid: 7bfa5679fedd0264c85e598b92eb9b8a, type: 3}
