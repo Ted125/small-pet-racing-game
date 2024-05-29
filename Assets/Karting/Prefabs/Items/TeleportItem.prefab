@@ -61,5 +61,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61f8d094efcc02945984cddcf7aa8820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_teleportDistance: 25
+  m_teleportPoints: []
   m_player: {fileID: 0}
+  m_itemIcon: {fileID: 21300000, guid: 58255582ada247744a486ba807177ab7, type: 3}
