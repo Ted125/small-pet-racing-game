@@ -1,3 +1,4 @@
+using Karting.Data;
 using Karting.UI.Core;
 using Karting.UI.Popups;
 using UnityEngine;
@@ -20,7 +21,12 @@ namespace Karting.UI.Screens
 
         private void ShowWelcomePopup()
         {
-            UIManager.Instance.ShowPopup<WelcomePopup>();
+            var saveData = SaveData.Load();
+
+            if (string.IsNullOrEmpty(saveData.PlayerName))
+            {
+                UIManager.Instance.ShowPopup<WelcomePopup>();
+            }
         }
 
         private void ShowLeaderboardPopup()
