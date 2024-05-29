@@ -1,19 +1,30 @@
+using Karting.UI.Core;
+using Karting.UI.Popups;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MenuScreen : MonoBehaviour
+namespace Karting.UI.Screens
 {
-    [SerializeField]
-    private Button _raceButton;
-
-    private void Start()
+    public class MenuScreen : MonoBehaviour
     {
-        _raceButton.onClick.AddListener(LoadRaceScene);
-    }
+        [SerializeField] private Button _raceButton;
+        [SerializeField] private Button _leaderboardButton;
 
-    private void LoadRaceScene()
-    {
-        SceneManager.LoadScene("MainScene");
+        private void Start()
+        {
+            _raceButton.onClick.AddListener(LoadRaceScene);
+            _leaderboardButton.onClick.AddListener(ShowLeaderboardPopup);
+        }
+
+        private void LoadRaceScene()
+        {
+            SceneManager.LoadScene("MainScene");
+        }
+
+        private void ShowLeaderboardPopup()
+        {
+            UIManager.Instance.ShowPopup<LeaderboardPopup>();
+        }
     }
 }

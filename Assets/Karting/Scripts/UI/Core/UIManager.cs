@@ -6,20 +6,19 @@ namespace Karting.UI.Core
 {
     public class UIManager : Singleton<UIManager>
     {
+        [SerializeField] private List<UIScreen> _screenPrefabs = new List<UIScreen>();
+        [SerializeField] private List<UIPopup> _popupPrefabs = new List<UIPopup>();
+        [SerializeField] private Canvas _canvas;
+
         public UIScreen CurrentScreen { get { return _screenStack.Count > 0 ? _screenStack.Peek() : null; } }
         public UIPopup CurrentPopup { get { return _popupStack.Count > 0 ? _popupStack.Peek() : null; } }
-
-        [SerializeField]
-        private List<UIScreen> _screenPrefabs = new List<UIScreen>();
-        [SerializeField]
-        private List<UIPopup> _popupPrefabs = new List<UIPopup>();
 
         private Stack<UIScreen> _screenStack = new Stack<UIScreen>();
         private Stack<UIPopup> _popupStack = new Stack<UIPopup>();
 
         public void ShowScreen<T>() where T : UIScreen
         {
-            var existingScreen = FindObjectOfType<T>();
+            var existingScreen = FindObjectOfType<T>(true);
 
             if (existingScreen is not null)
             {
@@ -45,7 +44,7 @@ namespace Karting.UI.Core
                     return;
                 }
 
-                var newScreen = Instantiate(newScreenPrefab);
+                var newScreen = Instantiate(newScreenPrefab, _canvas.transform);
 
                 if (CurrentScreen is not null)
                 {
@@ -60,7 +59,7 @@ namespace Karting.UI.Core
 
         public void ShowPopup<T>() where T : UIPopup
         {
-            var existingPopup = FindObjectOfType<T>();
+            var existingPopup = FindObjectOfType<T>(true);
 
             if (existingPopup is not null)
             {
@@ -80,7 +79,7 @@ namespace Karting.UI.Core
                     return;
                 }
 
-                var newPopup = Instantiate(newPopupPrefab);
+                var newPopup = Instantiate(newPopupPrefab, _canvas.transform);
                 _popupStack.Push(newPopup);
                 CurrentPopup.gameObject.SetActive(true);
             }

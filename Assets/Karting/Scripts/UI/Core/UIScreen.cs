@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Karting.UI.Core
 {
-    public abstract class UIScreen : UIComponent
+    public class UIScreen : UIComponent
     {
         [SerializeField]
         private Button _backButton;

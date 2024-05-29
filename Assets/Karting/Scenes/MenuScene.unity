@@ -2452,6 +2452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _raceButton: {fileID: 50913594}
+  _leaderboardButton: {fileID: 1708449274}
 --- !u!114 &955069511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6662,7 +6663,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _screenPrefabs: []
-  _popupPrefabs: []
+  _popupPrefabs:
+  - {fileID: 6549525862261278810, guid: 6f38b9bbb949f49808a4c57ddc46ec40, type: 3}
+  _canvas: {fileID: 1245107234}
 --- !u!114 &1341500393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7589,7 +7592,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1660664228}
   - component: {fileID: 1660664227}
-  - component: {fileID: 1660664226}
   - component: {fileID: 1660664225}
   m_Layer: 0
   m_Name: KartTurntableCamera
@@ -7614,14 +7616,6 @@ MonoBehaviour:
   serializedPrefabGuid: 
   originalPrefab: {fileID: 0}
   clearIfPrefabAsset: 1
---- !u!81 &1660664226
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1660664224}
-  m_Enabled: 1
 --- !u!20 &1660664227
 Camera:
   m_ObjectHideFlags: 0
@@ -7855,6 +7849,51 @@ MonoBehaviour:
   originalPrefab: {fileID: 7798798856362183816, guid: 19954de30401f73428254541a9ad156e,
     type: 3}
   clearIfPrefabAsset: 1
+--- !u!114 &1708449274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298243470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 0
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 21300000, guid: 3da15efbc124fa74bb265352dde462ab,
+      type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 98769805db27d624bb3fc86266485b9b, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 3da15efbc124fa74bb265352dde462ab, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: eda43a4479cdaa34d87043618112e2b5, type: 3}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Highlighted
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1960035863}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1711302697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8452,6 +8491,18 @@ MonoBehaviour:
   originalPrefab: {fileID: 7798798856362183902, guid: 19954de30401f73428254541a9ad156e,
     type: 3}
   clearIfPrefabAsset: 1
+--- !u!114 &1960035863 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4772294259278391863, guid: 3190c542009c6f04ab26eb73ebd3e616,
+    type: 3}
+  m_PrefabInstance: {fileID: 298243468}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298243470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2016053516
 MonoBehaviour:
   m_ObjectHideFlags: 0
