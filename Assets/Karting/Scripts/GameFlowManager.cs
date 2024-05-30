@@ -64,6 +64,7 @@ public class GameFlowManager : MonoBehaviour
         GameObject playerCart = SpawnCart(CartDataManager.GetInstance().carts[cartIdToLoad]);
         karts = new ArcadeKart[1];
         karts[0] = playerCart.GetComponent<ArcadeKart>();
+        karts[0].gameFlowManager = this;
         playerKart = karts[0];
 
         camera.Follow = karts[0].transform;
@@ -183,7 +184,7 @@ public class GameFlowManager : MonoBehaviour
         }
     }
 
-    void EndGame(bool win)
+    public void EndGame(bool win)
     {
         // unlocks the cursor before leaving the scene, to be able to click buttons
         Cursor.lockState = CursorLockMode.None;
