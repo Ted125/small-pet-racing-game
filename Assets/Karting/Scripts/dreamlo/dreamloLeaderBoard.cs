@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine.Networking;
+using UnityEngine.Events;
 
 public class dreamloLeaderBoard : MonoBehaviour {
 
@@ -99,10 +100,10 @@ public class dreamloLeaderBoard : MonoBehaviour {
 		StartCoroutine(GetRequest(dreamloWebserviceURL + privateCode + "/add-pipe/" + UnityWebRequest.EscapeURL(playerName) + "/" + totalScore.ToString() + "/" + totalSeconds.ToString()+ "/" + shortText));
 	}
 	
-	void GetScores()
+	public void GetScores(UnityAction onSuccess)
 	{
 		highScores = "";
-		StartCoroutine(GetRequest(dreamloWebserviceURL +  publicCode  + "/pipe"));
+		StartCoroutine(GetRequest(dreamloWebserviceURL +  publicCode  + "/pipe", onSuccess));
 	}
 	
 	void GetSingleScore(string playerName)
@@ -111,7 +112,7 @@ public class dreamloLeaderBoard : MonoBehaviour {
 		StartCoroutine(GetRequest(dreamloWebserviceURL +  publicCode  + "/pipe-get/" + UnityWebRequest.EscapeURL(playerName)));
 	}
 
-	IEnumerator GetRequest(string url)
+	IEnumerator GetRequest(string url, UnityAction onSuccess = null)
 	{
 		// Something not working? Try copying/pasting the url into your web browser and see if it works.
 		// Debug.Log(url);
@@ -120,6 +121,7 @@ public class dreamloLeaderBoard : MonoBehaviour {
 		{
 			yield return www.SendWebRequest();
 			highScores = www.downloadHandler.text;
+			onSuccess?.Invoke();
 		}
 	}
 	
