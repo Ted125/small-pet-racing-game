@@ -272,13 +272,13 @@ namespace KartGame.KartSystems
                 AddTrailToWheel(RearRightWheel);
             }
 
-            if (NozzleVFX != null)
-            {
-                foreach (var nozzle in Nozzles)
-                {
-                    Instantiate(NozzleVFX, nozzle, false);
-                }
-            }
+            //if (NozzleVFX != null)
+            //{
+            //    foreach (var nozzle in Nozzles)
+            //    {
+            //        Instantiate(NozzleVFX, nozzle, false);
+            //    }
+            //}
         }
 
         void AddTrailToWheel(WheelCollider wheel)

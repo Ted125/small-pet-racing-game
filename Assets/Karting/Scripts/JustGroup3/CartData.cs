@@ -12,9 +12,10 @@ public class CartData
     public string cartName;
     public float topSpeed;
     public float acceleration;
+    public int price;
 
     public CartData(int p_id, string p_prefabName, float p_metallic, int p_normalMapHeight, Color p_cartColor, 
-        string p_cartName, float p_topSpeed, float p_acceleration)
+        string p_cartName, float p_topSpeed, float p_acceleration, int p_price)
     {
         id = p_id;
         prefabName = p_prefabName;
@@ -24,6 +25,7 @@ public class CartData
         cartName = p_cartName;
         topSpeed = p_topSpeed;
         acceleration = p_acceleration;
+        price = p_price;
     }
 }
 
