@@ -15,6 +15,7 @@ namespace Karting.UI.Screens
         [SerializeField] private TMP_Text _playerName;
         [SerializeField] private Button _raceButton;
         [SerializeField] private Button _leaderboardButton;
+        [SerializeField] private TMP_Text _coinText;
         public GameObject cartTurnTableModel;
         public int currentTurntableCartID;
         public int currentSelectedCartID;
@@ -33,7 +34,13 @@ namespace Karting.UI.Screens
             currentSelectedCartID = PlayerPrefs.GetInt("CART_ID", 0);
             currentTurntableCartID = -1;
             ChangeCart(currentSelectedCartID);
+            UpdateCoins();
 
+        }
+
+        public void UpdateCoins()
+        {
+            _coinText.text = PlayerPrefs.GetInt("coins", 0).ToString();
         }
 
         public void ChangeCart(int id)

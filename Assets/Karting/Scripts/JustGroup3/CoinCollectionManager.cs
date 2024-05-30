@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-namespace KartGame.Items
-{
+
     public class CoinCollectionManager : MonoBehaviour
     {
         [SerializeField]
-        private int m_coinCount;
+        public  int m_coinCount;
         [SerializeField]
         private TextMeshProUGUI m_coinCountText;
 
@@ -18,5 +17,5 @@ namespace KartGame.Items
             m_coinCountText.text = m_coinCount.ToString();
         }
     }
-}
+
 

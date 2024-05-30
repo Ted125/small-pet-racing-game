@@ -5,6 +5,7 @@ using KartGame.KartSystems;
 using UnityEngine.SceneManagement;
 using Cinemachine;
 
+
 public enum GameState{Play, Won, Lost}
 
 public class GameFlowManager : MonoBehaviour
@@ -192,6 +193,7 @@ public class GameFlowManager : MonoBehaviour
 
         m_TimeManager.StopRace();
 
+
         // Remember that we need to load the appropriate end scene after a delay
         gameState = win ? GameState.Won : GameState.Lost;
         endGameFadeCanvasGroup.gameObject.SetActive(true);
@@ -220,5 +222,13 @@ public class GameFlowManager : MonoBehaviour
             loseDisplayMessage.delayBeforeShowing = delayBeforeWinMessage;
             loseDisplayMessage.gameObject.SetActive(true);
         }
+
+
+        int coins = PlayerPrefs.GetInt("coins", 0);
+        if (win)
+            coins += 10;
+        coins += GetComponentInChildren<CoinCollectionManager>().m_coinCount;
+        PlayerPrefs.SetInt("coins", coins);
+        PlayerPrefs.Save();
     }
 }
