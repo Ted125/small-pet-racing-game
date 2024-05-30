@@ -114,6 +114,7 @@ namespace Karting.UI.Screens
 
             if (saveData.RemainingEnergy < energyCost)
             {
+                UIManager.Instance.ShowPopup<NoEnergyPopup>();
                 return;
             }
 
