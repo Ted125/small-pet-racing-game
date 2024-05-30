@@ -51,5 +51,6 @@ namespace Karting.UI.Popups
                 standing.Render(rank, score.playerName, score.score);
             }
         }
+
     }
-}
+}   
