@@ -8,16 +8,28 @@ namespace KartGame.Items
 {
     public class TeleportItem : MonoBehaviour, IItemUse
     {
-        [SerializeField]
-        private Transform[] m_teleportPoints;
+        private List<Transform> m_teleportPoints = new List<Transform>();
         [SerializeField]
         private ArcadeKart m_player;
         [SerializeField]
         private Sprite m_itemIcon;
 
+        private void Start()
+        {
+            GameObject[] tpPoints;
+
+            tpPoints = GameObject.FindGameObjectsWithTag("TeleportPoint");
+
+            for (int i = 0; i < tpPoints.Length; i++)
+            {
+                m_teleportPoints.Add(tpPoints[i].transform);
+            }
+
+        }
+
         public void UseItem()
         {
-            int randPoint = Random.Range(0, m_teleportPoints.Length);
+            int randPoint = Random.Range(0, m_teleportPoints.Count);
             m_player.transform.position = m_teleportPoints[randPoint].position;
             FindObjectOfType<ItemUIHandle>().OnItemUsed();
         }
