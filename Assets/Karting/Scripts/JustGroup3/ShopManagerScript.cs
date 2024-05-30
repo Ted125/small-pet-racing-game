@@ -51,6 +51,8 @@ public class ShopManagerScript : MonoBehaviour
         buyCartButton.onClick.AddListener(BuyCart);
         cartData = CartDataManager.GetInstance().carts;
         UpdateUI();
+
+        PlayerPrefs.SetInt("OWNED_CART_0" , 1);
     }
 
     void backToMainMenu()
@@ -85,9 +87,21 @@ public class ShopManagerScript : MonoBehaviour
 
     void BuyCart()
     {
-        PlayerPrefs.SetInt("OWNED_CART_" + selectCounter, 1);
-        PlayerPrefs.Save();
-        UpdateUI();
+        CartData data = CartDataManager.GetInstance().carts[selectCounter];
+        int coinAmount = PlayerPrefs.GetInt("coins", 0);
+        if (coinAmount >= data.price)
+        {
+            coinAmount -= data.price;
+            PlayerPrefs.SetInt("coins", coinAmount);
+
+            PlayerPrefs.SetInt("OWNED_CART_" + selectCounter, 1);
+            PlayerPrefs.Save();
+            UpdateUI();
+        }
+        else
+        {
+            //insufficient funds;
+        }
     }
 
     void UpdateUI()

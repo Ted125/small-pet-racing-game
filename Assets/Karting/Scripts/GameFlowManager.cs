@@ -5,6 +5,7 @@ using KartGame.KartSystems;
 using UnityEngine.SceneManagement;
 using Cinemachine;
 
+
 public enum GameState{Play, Won, Lost}
 
 public class GameFlowManager : MonoBehaviour
@@ -64,6 +65,7 @@ public class GameFlowManager : MonoBehaviour
         GameObject playerCart = SpawnCart(CartDataManager.GetInstance().carts[cartIdToLoad]);
         karts = new ArcadeKart[1];
         karts[0] = playerCart.GetComponent<ArcadeKart>();
+        karts[0].gameFlowManager = this;
         playerKart = karts[0];
 
         camera.Follow = karts[0].transform;
@@ -183,13 +185,14 @@ public class GameFlowManager : MonoBehaviour
         }
     }
 
-    void EndGame(bool win)
+    public void EndGame(bool win)
     {
         // unlocks the cursor before leaving the scene, to be able to click buttons
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
         m_TimeManager.StopRace();
+
 
         // Remember that we need to load the appropriate end scene after a delay
         gameState = win ? GameState.Won : GameState.Lost;
@@ -219,5 +222,13 @@ public class GameFlowManager : MonoBehaviour
             loseDisplayMessage.delayBeforeShowing = delayBeforeWinMessage;
             loseDisplayMessage.gameObject.SetActive(true);
         }
+
+
+        int coins = PlayerPrefs.GetInt("coins", 0);
+        if (win)
+            coins += 10;
+        coins += GetComponentInChildren<CoinCollectionManager>().m_coinCount;
+        PlayerPrefs.SetInt("coins", coins);
+        PlayerPrefs.Save();
     }
 }

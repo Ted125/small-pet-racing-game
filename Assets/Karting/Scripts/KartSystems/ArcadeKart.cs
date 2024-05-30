@@ -186,10 +186,13 @@ namespace KartGame.KartSystems
         Vector3 m_LastCollisionNormal;
         bool m_HasCollision;
         bool m_InAir = false;
+        public GameFlowManager gameFlowManager;
 
         public void AddPowerup(StatPowerup statPowerup) => m_ActivePowerupList.Add(statPowerup);
         public void SetCanMove(bool move) => m_CanMove = move;
         public float GetMaxSpeed() => Mathf.Max(m_FinalStats.TopSpeed, m_FinalStats.ReverseSpeed);
+
+        ParticleSystem explosionEffect;
 
         public void Customize(CartData data)
         {
@@ -200,6 +203,7 @@ namespace KartGame.KartSystems
             mat.SetFloat("_BumpScale", data.normalMapHeight);
             baseStats.Acceleration = data.acceleration;
             baseStats.TopSpeed = data.topSpeed;
+            explosionEffect = Instantiate(Resources.Load<GameObject>("fx/explosion"), transform.position, Quaternion.identity, transform).GetComponent<ParticleSystem>();
         }    
 
         private void ActivateDriftVFX(bool active)
@@ -297,6 +301,7 @@ namespace KartGame.KartSystems
             m_DriftSparkInstances.Add((wheel, horizontalOffset, -rotation, spark));
         }
 
+        
         void FixedUpdate()
         {
             UpdateSuspensionParams(FrontLeftWheel);
@@ -414,7 +419,22 @@ namespace KartGame.KartSystems
             }
         }
 
-        void OnCollisionEnter(Collision collision) => m_HasCollision = true;
+        void OnCollisionEnter(Collision collision)
+        {
+            m_HasCollision = true;
+            if (collision.gameObject.layer == 11)
+            {
+                gameFlowManager.EndGame(false);
+                explosionEffect.gameObject.SetActive(true);
+
+                Rigidbody.AddForce(500, 10000, 0, ForceMode.Impulse);
+                Rigidbody.AddRelativeTorque(new Vector3(1000, 1000, 1000));
+
+                AudioSource source = this.gameObject.AddComponent<AudioSource>();
+                source.PlayOneShot(Resources.Load<AudioClip>("sounds/explodesounds"));
+
+            }
+        }
         void OnCollisionExit(Collision collision) => m_HasCollision = false;
 
         void OnCollisionStay(Collision collision)
