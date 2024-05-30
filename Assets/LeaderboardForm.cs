@@ -66,7 +66,7 @@ public class LeaderboardForm : MonoBehaviour
         Debug.Log("Player User name : " + field.text);
         Debug.Log("Player score : " + field2.text);
         //  Debug.Log("Player Rank : " + data.Scores*.rank.ToString());
-        dreamlo.AddScore(field.text, /*int.Parse(field2.text*/ PlayerPref.GetInt ("coins"));
+        dreamlo.AddScore(field.text, /*int.Parse(field2.text*/ PlayerPrefs.GetInt ("coins"));
 
     }
 
