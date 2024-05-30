@@ -27,13 +27,18 @@ namespace KartGame.Items
         {
             if (Input.GetButtonDown("UseItem"))
             {
-                if(currentHeldItem != null)
-                {
-                    Debug.Log("Used Item");
-                    currentHeldItem.GetComponent<IItemUse>().UseItem();
-                    currentHeldItem = null;
-                }
+                UseItem();
                 
+            }
+        }
+
+        public void UseItem()
+        {
+            if (currentHeldItem != null)
+            {
+                Debug.Log("Used Item");
+                currentHeldItem.GetComponent<IItemUse>().UseItem();
+                currentHeldItem = null;
             }
         }
     }
