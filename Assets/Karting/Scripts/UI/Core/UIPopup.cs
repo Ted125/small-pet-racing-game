@@ -8,7 +8,7 @@ namespace Karting.UI.Core
         [SerializeField]
         private Button _closeButton;
 
-        private void Start()
+        private void Awake()
         {
             _closeButton.onClick.AddListener(() => gameObject.SetActive(false));
         }
