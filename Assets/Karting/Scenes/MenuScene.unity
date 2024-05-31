@@ -8410,6 +8410,7 @@ MonoBehaviour:
   - {fileID: 6549525862261278810, guid: 6f38b9bbb949f49808a4c57ddc46ec40, type: 3}
   - {fileID: 6037041934974274353, guid: ccc862adc43774fccb71e8365799a161, type: 3}
   - {fileID: 4561625403428763385, guid: 8481dc82a21f34d1bb13cf7e7e87c4ac, type: 3}
+  - {fileID: 7256787490917542999, guid: 0e8ba2020ccdf4d08b4ab83ca61630fe, type: 3}
   _canvas: {fileID: 1245107234}
 --- !u!1 &1356561693
 GameObject:

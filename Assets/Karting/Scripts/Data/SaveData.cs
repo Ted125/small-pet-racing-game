@@ -65,6 +65,14 @@ namespace Karting.Data
             OnEnergyRefilled?.Invoke();
         }
 
+        public void RefillEnergy(int amount)
+        {
+            RemainingEnergy = Mathf.Clamp(RemainingEnergy + amount, 0, ConfigManager.Instance.EnergyConfig.MaxEnergy);
+            LastEnergyRefill = DateTime.UtcNow;
+            Save();
+            OnEnergyRefilled?.Invoke();
+        }
+
         public void AddGems(int amount)
         {
             Gems += amount;

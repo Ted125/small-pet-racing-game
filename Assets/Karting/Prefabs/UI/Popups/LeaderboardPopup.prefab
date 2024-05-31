@@ -1887,6 +1887,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6549525862261278808}
     m_Modifications:
+    - target: {fileID: 2363916675470801565, guid: 9aeda915279814e4cae59037fe1acd2f,
+        type: 3}
+      propertyPath: originalPrefab
+      value: 
+      objectReference: {fileID: 2639035259812352222, guid: 9aeda915279814e4cae59037fe1acd2f,
+        type: 3}
     - target: {fileID: 2639035259812352220, guid: 9aeda915279814e4cae59037fe1acd2f,
         type: 3}
       propertyPath: m_text
@@ -2093,6 +2099,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button_Icon_Text_Green
       objectReference: {fileID: 0}
+    - target: {fileID: 5239575058578181795, guid: 9aeda915279814e4cae59037fe1acd2f,
+        type: 3}
+      propertyPath: originalPrefab
+      value: 
+      objectReference: {fileID: 2639035260768020690, guid: 9aeda915279814e4cae59037fe1acd2f,
+        type: 3}
+    - target: {fileID: 7744266763465992797, guid: 9aeda915279814e4cae59037fe1acd2f,
+        type: 3}
+      propertyPath: originalPrefab
+      value: 
+      objectReference: {fileID: 2639035260800805293, guid: 9aeda915279814e4cae59037fe1acd2f,
+        type: 3}
+    - target: {fileID: 9086893184082767720, guid: 9aeda915279814e4cae59037fe1acd2f,
+        type: 3}
+      propertyPath: originalPrefab
+      value: 
+      objectReference: {fileID: 2639035260555502500, guid: 9aeda915279814e4cae59037fe1acd2f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9aeda915279814e4cae59037fe1acd2f, type: 3}
 --- !u!1 &9113926117857056597 stripped
