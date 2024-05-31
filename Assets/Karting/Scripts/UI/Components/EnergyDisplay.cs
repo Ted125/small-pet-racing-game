@@ -1,12 +1,13 @@
 using System.Collections;
 using Karting.Config;
 using Karting.Data;
+using Karting.UI.Core;
 using TMPro;
 using UnityEngine;
 
 namespace Karting.UI.Components
 {
-    public class EnergyDisplay : MonoBehaviour
+    public class EnergyDisplay : UIComponent
     {
         [SerializeField] private TMP_Text _energyText;
 
@@ -16,6 +17,11 @@ namespace Karting.UI.Components
             SaveData.OnEnergyConsumed += DisplayEnergy;
             SaveData.OnEnergyRefilled += DisplayEnergy;
             StartCoroutine(RefillEnergy());
+        }
+
+        protected override void OnShow()
+        {
+            DisplayEnergy();
         }
 
         private void DisplayEnergy()

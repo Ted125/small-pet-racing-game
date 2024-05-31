@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Karting.Data;
 using System.Collections;
 using System.Collections.Generic; // Make sure to include the TextMesh Pro namespace
 
@@ -61,12 +62,13 @@ public class LeaderboardForm : MonoBehaviour
 
     public void Submit()
       {
+        var saveData = SaveData.Load();
         //   Debug.Log("Player Name" + field2.text);
         //   Debug.Log("Score " + field.text);
-        Debug.Log("Player User name : " + field.text);
+        Debug.Log("Player User name : " + saveData.PlayerName);
         Debug.Log("Player score : " + field2.text);
         //  Debug.Log("Player Rank : " + data.Scores*.rank.ToString());
-        dreamlo.AddScore(field.text, /*int.Parse(field2.text*/ PlayerPrefs.GetInt ("coins"));
+        dreamlo.AddScore(saveData.PlayerName, /*int.Parse(field2.text*/ PlayerPrefs.GetInt ("coins"));
 
     }
 
