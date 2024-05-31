@@ -13,6 +13,8 @@ namespace KartGame.Items
         private ArcadeKart m_player;
         [SerializeField]
         private Sprite m_itemIcon;
+        [SerializeField]
+        private AudioSource m_audioSource;
 
         private void Start()
         {
@@ -29,6 +31,7 @@ namespace KartGame.Items
 
         public void UseItem()
         {
+            m_audioSource.Play();
             int randPoint = Random.Range(0, m_teleportPoints.Count);
             m_player.transform.position = m_teleportPoints[randPoint].position;
             FindObjectOfType<ItemUIHandle>().OnItemUsed();
