@@ -1,7 +1,6 @@
 ﻿using System;
-using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.VFX;
+using UnityEngine;
 
 namespace KartGame.KartSystems
 {
@@ -419,9 +418,14 @@ namespace KartGame.KartSystems
             }
         }
 
+        bool isGameEnded = false;
+
         void OnCollisionEnter(Collision collision)
         {
             m_HasCollision = true;
+            if (gameFlowManager.gameState != GameState.Play)
+                return;
+
             if (collision.gameObject.layer == 11)
             {
                 gameFlowManager.EndGame(false);
