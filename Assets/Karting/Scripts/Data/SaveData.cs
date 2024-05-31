@@ -12,10 +12,13 @@ namespace Karting.Data
         public bool HasPlayerRenamed = false;
         public int RemainingEnergy = ConfigManager.Instance.EnergyConfig.MaxEnergy;
         public DateTime LastEnergyRefill;
+        public int Gems = 0;
 
         public static UnityAction OnPlayerNameUpdated;
         public static UnityAction OnEnergyConsumed;
         public static UnityAction OnEnergyRefilled;
+        public static UnityAction OnGemsAdded;
+        public static UnityAction OnGemsUsed;
 
         private const string SAVE_DATA_FILE_NAME = "karting.save";
 
@@ -60,6 +63,20 @@ namespace Karting.Data
             LastEnergyRefill = DateTime.UtcNow;
             Save();
             OnEnergyRefilled?.Invoke();
+        }
+
+        public void AddGems(int amount)
+        {
+            Gems += amount;
+            Save();
+            OnGemsAdded?.Invoke();
+        }
+
+        public void UseGems(int amount)
+        {
+            Gems -= amount;
+            Save();
+            OnGemsUsed?.Invoke();
         }
 
         public void Save()
