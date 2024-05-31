@@ -9,6 +9,9 @@ namespace KartGame.Items
         private MeshRenderer m_mesh;
         private Collider m_collider;
 
+        [SerializeField]
+        private AudioSource m_audioSource;
+
         private void Start()
         {
             m_mesh = GetComponent<MeshRenderer>();
@@ -26,6 +29,7 @@ namespace KartGame.Items
 
         private IEnumerator OnHitRoutine()
         {
+            m_audioSource.Play();
             TurnOff();
             yield return new WaitForSeconds(5f);
             TurnOn();
