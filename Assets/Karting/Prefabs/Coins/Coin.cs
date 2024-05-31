@@ -18,8 +18,6 @@ namespace KartGame.Items
             if(other.tag == "Player")
             {
                 m_coinCollectionManager.AddCoin();
-                AudioSource source = this.gameObject.AddComponent<AudioSource>();
-                source.PlayOneShot(Resources.Load<AudioClip>("sounds/explodesounds"));
                 gameObject.SetActive(false);
             }
         }

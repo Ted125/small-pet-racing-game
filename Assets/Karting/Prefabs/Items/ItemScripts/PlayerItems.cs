@@ -14,6 +14,8 @@ namespace KartGame.Items
         [SerializeField]
         private GameObject currentHeldItem = null;
 
+
+
         public void SetRandomHeldItem()
         {
             int randomItemIndex = Random.Range(0, availableItems.Count);

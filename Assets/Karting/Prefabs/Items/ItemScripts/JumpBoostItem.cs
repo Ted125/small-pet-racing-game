@@ -18,12 +18,16 @@ namespace KartGame.AI
 
         private Rigidbody m_playerRb;
 
+        [SerializeField]
+        private AudioSource m_audioSource;
+
         private void Start()
         {
             m_playerRb = m_player.GetComponent<Rigidbody>();
         }
         public void UseItem()
         {
+            m_audioSource.Play();
             FindObjectOfType<ItemUIHandle>().OnItemUsed();
             m_playerRb.AddForce(new Vector3(0, m_jumpForce, 0), ForceMode.VelocityChange);
         }

@@ -16,11 +16,16 @@ namespace KartGame.Items
         private float m_effectDuration;
         [SerializeField]
         private Sprite m_itemIcon;
+        [SerializeField]
+        private AudioSource m_audioSource;
 
         [SerializeField]
         private Stats boostedStatsAddition;
+
+
         public void UseItem()
         {
+            m_audioSource.Play();
             FindObjectOfType<ItemUIHandle>().OnItemUsed();
             StartCoroutine(SpeedBoostRoutine());
         }

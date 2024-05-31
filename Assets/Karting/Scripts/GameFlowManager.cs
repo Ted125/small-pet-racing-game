@@ -4,6 +4,7 @@ using UnityEngine.Playables;
 using KartGame.KartSystems;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using Karting.Data;
 
 
 public enum GameState{Play, Won, Lost}
@@ -45,7 +46,7 @@ public class GameFlowManager : MonoBehaviour
     [SerializeField]
     Joystick joystick;
 
-
+    public dreamloLeaderBoard dreamlo;
     public GameState gameState { get; private set; }
 
     public bool autoFindKarts = true;
@@ -230,5 +231,9 @@ public class GameFlowManager : MonoBehaviour
         coins += GetComponentInChildren<CoinCollectionManager>().m_coinCount;
         PlayerPrefs.SetInt("coins", coins);
         PlayerPrefs.Save();
+
+        var saveData = SaveData.Load();
+        dreamlo.AddScore(saveData.PlayerName, coins);
+
     }
 }
